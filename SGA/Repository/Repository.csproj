@@ -5,16 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\Models\Model.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Folder Include="Helpers\Implementations\" />
+    <Folder Include="Helpers\Interfaces\" />
+    <Folder Include="Implementations\" />
+    <Folder Include="Interfaces\" />
   </ItemGroup>
 
 </Project>
