@@ -30,7 +30,7 @@ namespace Repository.Helpers.Implementations
             _connection.Close();
         }
 
-        public bool ExecuteNonQuery(string sp, DbParameter[] parameters)
+        public bool ExecuteNonQuery(string sp, SqlParameter[] parameters)
         {
             try
             {
@@ -79,7 +79,7 @@ namespace Repository.Helpers.Implementations
             }
         }
 
-        public async Task<DataTable> Get(string sp, DbParameter[] parameters)
+        public async Task<DataTable> Get(string sp, SqlParameter[] parameters)
         {
             try
             {
@@ -133,6 +133,35 @@ namespace Repository.Helpers.Implementations
                 return null;
             }
         }
+
+        public string GetBy(string sp, SqlParameter[] parameters)
+        {
+            try
+            {
+                DataTable _Dt = new DataTable();
+                using (var connection = _connection)
+                {
+                    cmd = new SqlCommand()
+                    {
+                        Connection = connection,
+                        CommandType = CommandType.StoredProcedure,
+                        CommandText = sp
+                    };
+                    if (parameters != null) cmd.Parameters.AddRange(parameters);
+                    _connection.Open();
+                    _Dt.Load(cmd.ExecuteReader());
+                    Dispose();
+                }
+                return _Dt.Rows[0].ToString();
+            }
+            catch (Exception ex)
+            {
+                RollbackTransaction();
+                return "";
+            }
+
+        }
+
         public void RollbackTransaction()
         {
             if (_transaction == null)
