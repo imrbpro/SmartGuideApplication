@@ -11,11 +11,10 @@ namespace Repository.Helpers.Interfaces
     {
         Task<DataTable> Get(string sp, DbParameter[] parameters);
         Task<DataTable> Get(string query);
-        bool Insert(string tblName, DataTable data);
-        bool Insert(string sp, DbParameter[] parameters);
         bool ExecuteNonQuery(string sp, DbParameter[] parameters);
         bool ExecuteNonQuery(string query);
         void Dispose();
+        void RollbackTransaction();
 
     }
 }

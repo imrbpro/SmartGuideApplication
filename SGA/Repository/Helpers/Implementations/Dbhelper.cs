@@ -12,14 +12,17 @@ namespace Repository.Helpers.Implementations
 {
     public class Dbhelper : IDBhelper
     {
-        private readonly IConfiguration _configuration;
-        private readonly SqlConnection _connection;
-        private readonly string _connectionString;
+        #region Private Variables
+        private IConfiguration _configuration;
+        private SqlConnection _connection;
+        private string _connectionString;
+        private SqlCommand cmd;
+        private DbTransaction _transaction;
+        #endregion
         public Dbhelper(IConfiguration config)
         {
             _configuration = config;
             _connectionString = _configuration.GetConnectionString("Db");
-            _connection = new SqlConnection(_connectionString);
         }
 
         public void Dispose()
@@ -29,32 +32,125 @@ namespace Repository.Helpers.Implementations
 
         public bool ExecuteNonQuery(string sp, DbParameter[] parameters)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _connection = new SqlConnection(_connectionString);
+                using (var connection = _connection)
+                {
+                    cmd = new SqlCommand()
+                    {
+                        Connection = connection,
+                        CommandType = CommandType.StoredProcedure,
+                        CommandText = sp
+                    };
+                    if (parameters != null) cmd.Parameters.AddRange(parameters);
+                    _connection.Open();
+                    if (cmd.ExecuteNonQuery() > 0) { Dispose(); return true; } else { Dispose(); return false; }
+                }
+            }
+            catch (Exception ex)
+            {
+                RollbackTransaction();
+                return false;
+            }
         }
 
         public bool ExecuteNonQuery(string query)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _connection = new SqlConnection(_connectionString);
+                using (var connection = _connection)
+                {
+                    cmd = new SqlCommand()
+                    {
+                        Connection = connection,
+                        CommandType = CommandType.Text,
+                        CommandText = query
+                    };
+                    _connection.Open();
+                    if (cmd.ExecuteNonQuery() > 0) { Dispose(); return true; } else { Dispose(); return false; }
+                }
+            }
+            catch (Exception ex)
+            {
+                RollbackTransaction();
+                return false;
+            }
         }
 
-        public Task<DataTable> Get(string sp, DbParameter[] parameters)
+        public async Task<DataTable> Get(string sp, DbParameter[] parameters)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DataTable _Dt = new DataTable();
+                using (var connection = _connection)
+                {
+                    cmd = new SqlCommand()
+                    {
+                        Connection = connection,
+                        CommandType = CommandType.StoredProcedure,
+                        CommandText = sp
+                    };
+                    if (parameters != null) cmd.Parameters.AddRange(parameters);
+                    _connection.Open();
+                    _Dt.Load(cmd.ExecuteReader());
+                    Dispose();
+                }
+                return _Dt;
+            }
+            catch (Exception ex)
+            {
+                RollbackTransaction();
+                return null;
+            }
+
+
         }
 
-        public Task<DataTable> Get(string query)
+        public async Task<DataTable> Get(string query)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DataTable _Dt = new DataTable();
+                using (var connection = _connection)
+                {
+                    cmd = new SqlCommand()
+                    {
+                        Connection = connection,
+                        CommandType = CommandType.Text,
+                        CommandText = query
+                    };
+                    _connection.Open();
+                    _Dt.Load(cmd.ExecuteReader());
+                    Dispose();
+                }
+                return _Dt;
+            }
+            catch (Exception ex)
+            {
+                RollbackTransaction();
+                return null;
+            }
         }
-
-        public bool Insert(string tblName, DataTable data)
+        public void RollbackTransaction()
         {
-            throw new NotImplementedException();
-        }
-
-        public bool Insert(string sp, DbParameter[] parameters)
-        {
-            throw new NotImplementedException();
+            if (_transaction == null)
+            {
+                return;
+            }
+            try
+            {
+                _transaction.Rollback();
+            }
+            finally
+            {
+                if (_transaction != null)
+                {
+                    _transaction.Dispose();
+                }
+                _transaction = null;
+            }
         }
     }
 }
