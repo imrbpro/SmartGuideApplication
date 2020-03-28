@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Repository.Helpers.Implementations;
+using Repository.Helpers.Interfaces;
 using Repository.Implementations;
 using Repository.Interfaces;
 using Services.Impementations;
@@ -23,8 +25,9 @@ namespace SGA
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddScoped<IShopRepository, ShopRepository>();
-            services.AddScoped<IShopService, ShopService>();
+            services.AddSingleton<IShopService, ShopService>();
+            services.AddSingleton<IShopRepository, ShopRepository>();
+            services.AddSingleton<IDBhelper, Dbhelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

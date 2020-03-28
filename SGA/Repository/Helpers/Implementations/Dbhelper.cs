@@ -13,7 +13,7 @@ namespace Repository.Helpers.Implementations
     public class Dbhelper : IDBhelper
     {
         #region Private Variables
-        private IConfiguration _configuration;
+        private readonly IConfiguration _configuration;
         private SqlConnection _connection;
         private string _connectionString;
         private SqlCommand cmd;
@@ -83,6 +83,8 @@ namespace Repository.Helpers.Implementations
         {
             try
             {
+
+                _connection = new SqlConnection(_connectionString);
                 DataTable _Dt = new DataTable();
                 using (var connection = _connection)
                 {
@@ -112,6 +114,8 @@ namespace Repository.Helpers.Implementations
         {
             try
             {
+
+                _connection = new SqlConnection(_connectionString);
                 DataTable _Dt = new DataTable();
                 using (var connection = _connection)
                 {
@@ -138,6 +142,7 @@ namespace Repository.Helpers.Implementations
         {
             try
             {
+                _connection = new SqlConnection(_connectionString);
                 DataTable _Dt = new DataTable();
                 using (var connection = _connection)
                 {

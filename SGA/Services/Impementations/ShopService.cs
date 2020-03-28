@@ -10,7 +10,7 @@ namespace Services.Impementations
 {
     public class ShopService : IShopService
     {
-        IShopRepository _shopRepository;
+        private readonly IShopRepository _shopRepository;
         public ShopService(IShopRepository shopRepository)
         {
             _shopRepository = shopRepository;

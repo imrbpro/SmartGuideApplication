@@ -12,7 +12,7 @@ namespace SGA.Controllers
     [ApiController]
     public class ShopsController : ControllerBase
     {
-        IShopService _shopService;
+        private readonly IShopService _shopService;
         public ShopsController(IShopService ShopService)
         {
             _shopService = ShopService;

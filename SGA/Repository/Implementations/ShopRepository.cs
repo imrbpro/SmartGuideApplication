@@ -16,12 +16,17 @@ namespace Repository.Implementations
 {
     public class ShopRepository : IShopRepository
     {
-        private IDBhelper db;
+        private readonly IDBhelper db;
         private IConfiguration configuration;
         private DataTable dt = new DataTable();
         private bool isCreated = false;
         private bool isDeleted = false;
         private bool isUpdated = false;
+        public ShopRepository(IDBhelper _db,IConfiguration config)
+        {
+            db = _db;
+            configuration = config;
+        }
         
         public bool AddShop(Shop shop)
         {
@@ -66,7 +71,7 @@ namespace Repository.Implementations
                 DataTable dt = new DataTable();
                 SqlParameter[] sqlParameter = { new SqlParameter("@page",page) };
                 dt =await db.Get(SpConstants.SP_GET_ALL_SHOPS, sqlParameter);
-                return dt.Rows[0].ToString();
+                return dt.Rows[0].ItemArray[0].ToString();
             }
             catch (Exception ex)
             {
