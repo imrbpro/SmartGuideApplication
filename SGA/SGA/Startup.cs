@@ -9,6 +9,7 @@ using Repository.Implementations;
 using Repository.Interfaces;
 using Services.Impementations;
 using Services.Interfaces;
+using SGA.Helpers;
 
 namespace SGA
 {
@@ -25,9 +26,7 @@ namespace SGA
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddSingleton<IShopService, ShopService>();
-            services.AddSingleton<IShopRepository, ShopRepository>();
-            services.AddSingleton<IDBhelper, Dbhelper>();
+            services.Register();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
