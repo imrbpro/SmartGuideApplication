@@ -19,5 +19,27 @@ namespace Services.Impementations
         {
             return await _shopRepository.GetAllShops(page);
         }
+        public string GetShopById(int id)
+        {
+            return _shopRepository.GetShopById(id);
+        }
+        public string GetShopsByBrand(string brand)
+        {
+            return _shopRepository.GetShopsByBrand(brand);
+        }
+        public bool DeleteShop(int id)
+        {
+            return _shopRepository.DeleteShop(id);
+        }
+
+        public bool AddShop(Shop shop)
+        {
+            return _shopRepository.AddShop(shop);
+        }
+
+        public bool UpdateShop(int id, Shop shop)
+        {
+            return _shopRepository.UpdateShop(id,shop);
+        }
     }
 }

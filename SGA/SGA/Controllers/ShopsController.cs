@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Model;
 using Services.Interfaces;
 
 namespace SGA.Controllers
@@ -17,37 +18,43 @@ namespace SGA.Controllers
         {
             _shopService = ShopService;
         }
-        // GET: api/Shops
         [HttpGet]
-        public async Task<string> Get()
+        [Route("GetAll/{page}")]
+        public async Task<string> GetAllShops(int page)
         {
-            int page = 1;
             return await _shopService.GetAllShops(page);
         }
 
-        //// GET: api/Shops/5
-        //[HttpGet("{id}", Name = "Get")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        [HttpGet]
+        [Route("GetById/{id}")]
+        public string GetShopById(int id)
+        {
+            return _shopService.GetShopById(id);
+        }
 
-        //// POST: api/Shops
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
-
-        //// PUT: api/Shops/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE: api/ApiWithActions/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        [HttpGet]
+        [Route("GetByBrand/{brand}")]
+        public string GetShopByBrand(string brand)
+        {
+            return _shopService.GetShopsByBrand(brand);
+        }
+        [HttpDelete]
+        [Route("Delete/{id}")]
+        public bool Delete(int id)
+        {
+            return _shopService.DeleteShop(id);
+        }
+        [HttpPost]
+        [Route("AddNew")]
+        public bool CreateShop([FromBody] Shop shop)
+        {
+            return _shopService.AddShop(shop);
+        }
+        [HttpPut]
+        [Route("Update")]
+        public bool UpdateShop(int id, [FromBody] Shop shop)
+        {
+            return _shopService.UpdateShop(id, shop);
+        }
     }
 }

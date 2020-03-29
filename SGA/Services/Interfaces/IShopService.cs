@@ -8,6 +8,12 @@ namespace Services.Interfaces
 {
     public interface IShopService
     {
-        Task<string> GetAllShops(int shop);  
+        Task<string> GetAllShops(int shop);
+        string GetShopById(int id);
+        string GetShopsByBrand(string brand);
+        bool DeleteShop(int id);
+        bool AddShop(Shop shop);
+        bool UpdateShop(int id, Shop shop);
+
     }
 }

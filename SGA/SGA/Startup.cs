@@ -3,12 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Repository.Helpers.Implementations;
-using Repository.Helpers.Interfaces;
-using Repository.Implementations;
-using Repository.Interfaces;
-using Services.Impementations;
-using Services.Interfaces;
 using SGA.Helpers;
 
 namespace SGA
