@@ -157,7 +157,7 @@ namespace Repository.Helpers.Implementations
                     _Dt.Load(cmd.ExecuteReader());
                     Dispose();
                 }
-                return _Dt.Rows[0].ToString();
+                return _Dt.Rows[0].ItemArray[0].ToString();
             }
             catch (Exception ex)
             {
