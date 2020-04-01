@@ -6,6 +6,7 @@ namespace Model
 {
     public class Shop
     {
+        public string shopid { get; set; }
         public string shopname { get; set; }
         public string ownername { get; set; }
         public double longitude { get; set; }

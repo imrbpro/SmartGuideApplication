@@ -13,7 +13,7 @@ namespace Services.Interfaces
         string GetShopsByBrand(string brand);
         bool DeleteShop(int id);
         bool AddShop(Shop shop);
-        bool UpdateShop(int id, Shop shop);
+        bool UpdateShop(Shop shop);
 
     }
 }

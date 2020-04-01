@@ -85,7 +85,6 @@ namespace Repository.Implementations
             {
                 SqlParameter[] sqlParameter = { new SqlParameter("@ShopId", id) };
                 return db.GetBy(SpConstants.SP_GET_SHOP_BY_ID, sqlParameter);
-                
             }
             catch (Exception ex)
             {
@@ -109,14 +108,14 @@ namespace Repository.Implementations
 
         }
 
-        public bool UpdateShop(int id, Shop shop)
+        public bool UpdateShop(Shop shop)
         {
             try
             {
 
                 SqlParameter[] dbParameter = 
                 {
-                    new SqlParameter("@ShopId", id),
+                    new SqlParameter("@ShopId", shop.shopid),
                     new SqlParameter("@shopname",shop.shopname),
                     new SqlParameter("@ownername",shop.ownername),
                     new SqlParameter("@longitude",shop.longitude),

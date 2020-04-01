@@ -37,9 +37,9 @@ namespace Services.Impementations
             return _shopRepository.AddShop(shop);
         }
 
-        public bool UpdateShop(int id, Shop shop)
+        public bool UpdateShop(Shop shop)
         {
-            return _shopRepository.UpdateShop(id,shop);
+            return _shopRepository.UpdateShop(shop);
         }
     }
 }

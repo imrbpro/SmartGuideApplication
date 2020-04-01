@@ -12,7 +12,7 @@ namespace Repository.Interfaces
         string GetShopById(int id);
         string GetShopsByBrand(string brand);
         bool AddShop(Shop shop);
-        bool UpdateShop(int id, Shop shop);
+        bool UpdateShop(Shop shop);
         bool DeleteShop(int id);
 
     }

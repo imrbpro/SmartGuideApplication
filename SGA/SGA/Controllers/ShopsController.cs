@@ -52,9 +52,9 @@ namespace SGA.Controllers
         }
         [HttpPut]
         [Route("Update")]
-        public bool UpdateShop(int id, [FromBody] Shop shop)
+        public bool UpdateShop([FromBody] Shop shop)
         {
-            return _shopService.UpdateShop(id, shop);
+            return _shopService.UpdateShop(shop);
         }
     }
 }
