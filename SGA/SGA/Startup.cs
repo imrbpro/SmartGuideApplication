@@ -21,6 +21,17 @@ namespace SGA
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.Register();
+            services.AddSwaggerGen(x => {
+                x.SwaggerDoc("Smart Guide Application | API - V1", new Microsoft.OpenApi.Models.OpenApiInfo {
+                    Version = "v1.0",
+                    Title = "Smart Guide Application | API - V1",
+                    Contact = new Microsoft.OpenApi.Models.OpenApiContact
+                    {
+                        Name = "Muhammad Rehan Baig",
+                        Email = "mrb5only@gmail.com"
+                    }
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +49,8 @@ namespace SGA
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseSwagger();
+            app.UseSwaggerUI();
         }
     }
 }
