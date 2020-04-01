@@ -100,5 +100,31 @@ namespace Repository.Implementations
                 return false;
             }
         }
+
+        public bool Delete(int id)
+        {
+            try
+            {
+                SqlParameter[] parameter = { new SqlParameter("@EventId",id) };
+                return db.ExecuteNonQuery(SpConstants.SP_DELETE_EVENT_BY_ID,parameter);
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public string GetAllEvents(int page)
+        {
+            try
+            {
+                SqlParameter[] parameter = { new SqlParameter("@Page", page) };
+                return db.GetBy(SpConstants.SP_GET_ALL_EVENTS, parameter);
+            }
+            catch (Exception ex)
+            {
+                return "Error while fetching data from Database";
+            }
+        }
     }
 }

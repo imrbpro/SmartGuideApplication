@@ -11,7 +11,9 @@ namespace Repository.Interfaces
         string GetEventsByShop(int id);
         string GetEventsByBrand(int id);
         string GetEventById(int id);
+        string GetAllEvents(int page);
         bool Update(Event _event);
+        bool Delete(int id);
 
     }
 }
