@@ -6,11 +6,11 @@ namespace Model
 {
     public class Shop
     {
-        public string shopid { get; set; }
-        public string shopname { get; set; }
-        public string ownername { get; set; }
-        public double longitude { get; set; }
-        public double latitude { get; set; }
-        public string imagepath { get; set; }
+        public string ShopId { get; set; }
+        public string ShopName { get; set; }
+        public string OwnerName { get; set; }
+        public double Longitude { get; set; }
+        public double Latitude { get; set; }
+        public string Imagepath { get; set; }
     }
 }

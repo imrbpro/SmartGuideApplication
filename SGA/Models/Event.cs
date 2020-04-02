@@ -6,12 +6,12 @@ namespace Model
 {
     public class Event
     {
-        public int eventid { get; set; }
-        public int shopid { get; set; }
-        public int brandid { get; set; }
-        public string name { get; set; }
-        public string details { get; set; }
-        public DateTime dateTime { get; set; }
+        public int EventId { get; set; }
+        public int ShopId { get; set; }
+        public int BrandId { get; set; }
+        public string Name { get; set; }
+        public string Details { get; set; }
+        public DateTime DateTime { get; set; }
 
     }
 }

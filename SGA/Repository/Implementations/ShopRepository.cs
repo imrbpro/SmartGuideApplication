@@ -34,11 +34,11 @@ namespace Repository.Implementations
             {
                 SqlParameter[] dbParameter =
                 {
-                    new SqlParameter("@shopname",shop.shopname),
-                    new SqlParameter("@ownername",shop.ownername),
-                    new SqlParameter("@longitude",shop.longitude),
-                    new SqlParameter("@latitude",shop.latitude),
-                    new SqlParameter("@imagepath",shop.imagepath)
+                    new SqlParameter("@shopname",shop.ShopName),
+                    new SqlParameter("@ownername",shop.OwnerName),
+                    new SqlParameter("@longitude",shop.Longitude),
+                    new SqlParameter("@latitude",shop.Latitude),
+                    new SqlParameter("@imagepath",shop.Imagepath)
                 };
                 isCreated = db.ExecuteNonQuery(SpConstants.SP_ADD_NEW_SHOP, dbParameter);
                 return isCreated;
@@ -115,12 +115,12 @@ namespace Repository.Implementations
 
                 SqlParameter[] dbParameter = 
                 {
-                    new SqlParameter("@ShopId", shop.shopid),
-                    new SqlParameter("@shopname",shop.shopname),
-                    new SqlParameter("@ownername",shop.ownername),
-                    new SqlParameter("@longitude",shop.longitude),
-                    new SqlParameter("@latitude",shop.latitude),
-                    new SqlParameter("@imagepath",shop.imagepath)
+                    new SqlParameter("@ShopId", shop.ShopId),
+                    new SqlParameter("@shopname",shop.ShopName),
+                    new SqlParameter("@ownername",shop.OwnerName),
+                    new SqlParameter("@longitude",shop.Longitude),
+                    new SqlParameter("@latitude",shop.Latitude),
+                    new SqlParameter("@imagepath",shop.Imagepath)
                 };
                 isUpdated = db.ExecuteNonQuery(SpConstants.SP_UPDATE_SHOP, dbParameter);
                 return isUpdated;

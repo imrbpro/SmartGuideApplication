@@ -30,11 +30,11 @@ namespace Repository.Implementations
             {
                 SqlParameter[] parameter =
                 {
-                    new SqlParameter("@shopid",_event.shopid),
-                    new SqlParameter("@brandid",_event.brandid),
-                    new SqlParameter("@eventname",_event.name),
-                    new SqlParameter("@eventdetails",_event.details),
-                    new SqlParameter("@eventdate",_event.dateTime)
+                    new SqlParameter("@shopid",_event.ShopId),
+                    new SqlParameter("@brandid",_event.BrandId),
+                    new SqlParameter("@eventname",_event.Name),
+                    new SqlParameter("@eventdetails",_event.Details),
+                    new SqlParameter("@eventdate",_event.DateTime)
                 };
                 return db.ExecuteNonQuery(SpConstants.SP_ADD_EVENT, parameter);
             }
@@ -87,11 +87,11 @@ namespace Repository.Implementations
             {
                 SqlParameter[] parameter =
                 {
-                    new SqlParameter("@ShopId", _event.shopid),
-                    new SqlParameter("@BrandId", _event.brandid),
-                    new SqlParameter("@EventName", _event.name),
-                    new SqlParameter("@EventDetails", _event.details),
-                    new SqlParameter("@EventDateTime", _event.dateTime)
+                    new SqlParameter("@ShopId", _event.ShopId),
+                    new SqlParameter("@BrandId", _event.BrandId),
+                    new SqlParameter("@EventName", _event.Name),
+                    new SqlParameter("@EventDetails", _event.Details),
+                    new SqlParameter("@EventDateTime", _event.DateTime)
                 };
                 return db.ExecuteNonQuery("SpUpdateEvent", parameter);
             }
