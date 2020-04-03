@@ -38,7 +38,7 @@ namespace Repository.Implementations
                 };
                 return db.ExecuteNonQuery(SpConstants.SP_ADD_EVENT, parameter);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }
@@ -95,7 +95,7 @@ namespace Repository.Implementations
                 };
                 return db.ExecuteNonQuery("SpUpdateEvent", parameter);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }
@@ -105,10 +105,10 @@ namespace Repository.Implementations
         {
             try
             {
-                SqlParameter[] parameter = { new SqlParameter("@EventId",id) };
-                return db.ExecuteNonQuery(SpConstants.SP_DELETE_EVENT_BY_ID,parameter);
+                SqlParameter[] parameter = { new SqlParameter("@EventId", id) };
+                return db.ExecuteNonQuery(SpConstants.SP_DELETE_EVENT_BY_ID, parameter);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }

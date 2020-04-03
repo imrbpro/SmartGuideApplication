@@ -19,10 +19,16 @@ namespace SGA.Helpers
             #region Services
             services.AddSingleton<IShopService, ShopService>();
             services.AddSingleton<IEventService, EventService>();
+            services.AddSingleton<IBrandService, BrandService>();
+            services.AddSingleton<IProductService, ProductService>();
+            services.AddSingleton<IPromotionService, PromotionService>();
             #endregion
             #region REPOSITORIES
             services.AddSingleton<IShopRepository, ShopRepository>();
             services.AddSingleton<IEventRepository, EventRepository>();
+            services.AddSingleton<IBrandRepository, BrandRepository>();
+            services.AddSingleton<IProductRepository, ProductRepository>();
+            services.AddSingleton<IPromotionRepository, PromotionRepository>();
             #endregion
             #region DB
             services.AddSingleton<IDBhelper, Dbhelper>();
