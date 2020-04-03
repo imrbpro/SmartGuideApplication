@@ -1,0 +1,12 @@
+﻿CREATE PROCEDURE SpGetAllShops
+	@Page int
+AS
+BEGIN
+	SELECT * FROM 
+	shop 
+	ORDER BY shop_id 
+	OFFSET (@Page - 1) * 10 ROWS 
+	FETCH 
+	NEXT 10 ROWS ONLY 
+	FOR JSON PATH 
+END
