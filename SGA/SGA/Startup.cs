@@ -21,8 +21,10 @@ namespace SGA
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.Register();
-            services.AddSwaggerGen(x => {
-                x.SwaggerDoc("Smart Guide Application | API - V1", new Microsoft.OpenApi.Models.OpenApiInfo {
+            services.AddSwaggerGen(x =>
+            {
+                x.SwaggerDoc("Smart Guide Application | API - V1", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
                     Version = "v1.0",
                     Title = "Smart Guide Application | API - V1",
                     Contact = new Microsoft.OpenApi.Models.OpenApiContact
@@ -46,7 +48,11 @@ namespace SGA
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UseCors(builder => builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .AllowCredentials());
             app.UseHttpsRedirection();
             app.UseMvc();
             app.UseSwagger();

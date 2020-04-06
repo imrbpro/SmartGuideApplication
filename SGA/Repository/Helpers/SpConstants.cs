@@ -19,5 +19,12 @@
         public const string SP_DELETE_EVENT_BY_ID = "SpDeleteEvent";
         public const string SP_GET_ALL_EVENTS = "SpGetAllEvents";
         #endregion
+        #region Brand
+        public const string SP_GET_BRAND_BY_ID = "SpGetBrandById";
+        public const string SP_GET_ALL_BRANDS = "SpGetAllBrands";
+        public const string SP_DELETE_BRAND = "SpDeleteBrand";
+        public const string SP_UPDATE_BRAND = "SpUpdateBrand";
+        public const string SP_ADD_BRAND = "SpAddBrand";
+        #endregion
     }
 }

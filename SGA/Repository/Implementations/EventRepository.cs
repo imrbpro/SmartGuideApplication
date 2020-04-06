@@ -14,15 +14,13 @@ namespace Repository.Implementations
     public class EventRepository : IEventRepository
     {
         private readonly IDBhelper db;
-        private IConfiguration configuration;
         private DataTable dt = new DataTable();
         private bool isCreated = false;
         private bool isDeleted = false;
         private bool isUpdated = false;
-        public EventRepository(IDBhelper _db, IConfiguration config)
+        public EventRepository(IDBhelper _db)
         {
             db = _db;
-            configuration = config;
         }
         public bool AddEvent(Event _event)
         {
@@ -38,7 +36,7 @@ namespace Repository.Implementations
                 };
                 return db.ExecuteNonQuery(SpConstants.SP_ADD_EVENT, parameter);
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 return false;
             }
@@ -95,7 +93,7 @@ namespace Repository.Implementations
                 };
                 return db.ExecuteNonQuery("SpUpdateEvent", parameter);
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 return false;
             }
@@ -105,10 +103,10 @@ namespace Repository.Implementations
         {
             try
             {
-                SqlParameter[] parameter = { new SqlParameter("@EventId", id) };
-                return db.ExecuteNonQuery(SpConstants.SP_DELETE_EVENT_BY_ID, parameter);
+                SqlParameter[] parameter = { new SqlParameter("@EventId",id) };
+                return db.ExecuteNonQuery(SpConstants.SP_DELETE_EVENT_BY_ID,parameter);
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 return false;
             }

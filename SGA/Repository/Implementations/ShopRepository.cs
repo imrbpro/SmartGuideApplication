@@ -17,15 +17,13 @@ namespace Repository.Implementations
     public class ShopRepository : IShopRepository
     {
         private readonly IDBhelper db;
-        private IConfiguration configuration;
         private DataTable dt = new DataTable();
         private bool isCreated = false;
         private bool isDeleted = false;
         private bool isUpdated = false;
-        public ShopRepository(IDBhelper _db,IConfiguration config)
+        public ShopRepository(IDBhelper _db)
         {
             db = _db;
-            configuration = config;
         }
         
         public bool AddShop(Shop shop)

@@ -1,0 +1,82 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Model;
+using Services.Interfaces;
+
+namespace SGA.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class BrandController : ControllerBase
+    {
+
+        IBrandService _svc;
+        public BrandController(IBrandService service)
+        {
+            _svc = service;
+        }
+
+        ///<summary> 
+        ///Get all Brands 
+        ///</summary>
+        ///<param name="page"><param>
+        ///<returns></returns>
+        [HttpGet]
+        [Route("GetAll/{page}")]
+        public string GetAllBrands(int page)
+        {
+            return _svc.GetAllBrands(page);
+        }
+
+        ///<summary> 
+        ///Get Brand by id
+        ///</summary>
+        ///<param name="id"><param>
+        ///<returns></returns>
+        [HttpGet]
+        [Route("GetById/{id}")]
+        public string GetBrandById(int id)
+        {
+            return _svc.GetBrandById(id);
+        }
+
+        ///<summary> 
+        ///Adds new brand
+        ///</summary>
+        ///<returns></returns>
+        [HttpPost]
+        [Route("AddNew")]
+        public bool AddBrand([FromBody] Brand brand)
+        {
+            return _svc.Add(brand);
+        }
+
+        ///<summary> 
+        ///Update Current brand
+        ///</summary>
+        ///<returns></returns>
+        [HttpPost]
+        [Route("Update")]
+        public bool UpdateBrand([FromBody] Brand brand)
+        {
+            return _svc.Update(brand);
+        }
+
+        ///<summary> 
+        ///Delete existing brand 
+        ///</summary>
+        ///<param name="id"><param>
+        ///<returns></returns>
+        [HttpPost]
+        [Route("Delete")]
+        public bool DeleteBrand(int id)
+        {
+            return _svc.Delete(id);
+        }
+
+    }
+}
