@@ -85,7 +85,7 @@ namespace SGA.Controllers
         ///</summary>
         ///<param name="id"><param>
         ///<returns></returns>
-        [HttpPost]
+        [HttpDelete]
         [Route("Delete")]
         public string DeleteBrand(int id)
         {
