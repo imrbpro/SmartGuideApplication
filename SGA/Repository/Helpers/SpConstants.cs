@@ -26,5 +26,24 @@
         public const string SP_UPDATE_BRAND = "SpUpdateBrand";
         public const string SP_ADD_BRAND = "SpAddBrand";
         #endregion
+        #region Product
+        public const string SP_ADD_NEW_PRODUCT = "SpAddProduct";
+        public const string SP_UPDATE_PRODUCT = "SpUpdateProduct";
+        public const string SP_DELETE_PRODUCT = "SpDeleteProduct";
+        public const string SP_GET_ALL_PRODUCTS = "SpGetAllProducts";
+        public const string SP_GET_PRODUCT_BY_ID = "SpGetProductById";
+        public const string SP_GET_PRODUCT_BY_BRAND_ID = "SpGetProductsByBrandId";
+        public const string SP_GET_PRODUCT_BY_SHOP_ID = "SpGetProductByShopId";
+        public const string SP_GET_PRODUCT_BY_NAME = "SpGetProductByName";
+        #endregion
+        #region Promotion
+        public const string SP_ADD_PROMOTION = "SpAddPromotion";
+        public const string SP_UPDATE_PROMOTION = "SpUpdatePromotion";
+        public const string SP_DELETE_PROMOTION = "SpDeletePromotion";
+        public const string SP_GET_ALL_PROMOTIONS = "SpGetAllPromotions";
+        public const string SP_GET_PROMOTION_BY_ID = "SpGetPromotionById";
+        public const string SP_GET_PROMOTION_BY_BRAND_ID = "SpGetPromotionByBrandId";
+        public const string SP_GET_PROMOTION_BY_SHOP_ID = "SpGetPromotionByShopId";
+        #endregion
     }
 }

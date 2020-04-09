@@ -13,5 +13,8 @@ namespace Model
         public int ShopId { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        public string PromoCode { get; set; }
+        public bool isShop { get; set; }
+        public bool isBrand { get; set; }
     }
 }
