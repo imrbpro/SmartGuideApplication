@@ -49,21 +49,42 @@ namespace SGA.Controllers
 
         [HttpDelete]
         [Route("Delete/{id}")]
-        public bool Delete(int id)
+        public string Delete(int id)
         {
-            return _eventService.DeleteEvent(id);
+            if (_eventService.DeleteEvent(id))
+            {
+                return StatusCodes.Status200OK.ToString();
+            }
+            else
+            {
+                return StatusCodes.Status400BadRequest.ToString();
+            }
         }
         [HttpPost]
-        [Route("AddNew")]
-        public bool AddEvent([FromBody] Event _event)
+        [Route("Add")]
+        public string AddEvent([FromBody] Event _event)
         {
-            return _eventService.AddEvent(_event);
+            if (_eventService.AddEvent(_event))
+            {
+                return StatusCodes.Status201Created.ToString();
+            }
+            else
+            {
+                return StatusCodes.Status400BadRequest.ToString();
+            }
         }
         [HttpPut]
         [Route("Update")]
-        public bool Update([FromBody] Event _event)
+        public string Update([FromBody] Event _event)
         {
-            return _eventService.UpdateEvent(_event);
+            if (_eventService.UpdateEvent(_event))
+            {
+                return StatusCodes.Status200OK.ToString();
+            }
+            else
+            {
+                return StatusCodes.Status400BadRequest.ToString();
+            }
         }
     }
 }

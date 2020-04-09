@@ -18,12 +18,15 @@ namespace Repository.Implementations
         private bool isCreated = false;
         private bool isDeleted = false;
         private bool isUpdated = false;
+        private Validate validate = new Validate();
+
         public EventRepository(IDBhelper _db)
         {
             db = _db;
         }
         public bool AddEvent(Event _event)
         {
+            DateTime dateTime = validate.ValidateDateTime(_event.DateTime);
             try
             {
                 SqlParameter[] parameter =
@@ -32,7 +35,7 @@ namespace Repository.Implementations
                     new SqlParameter("@brandid",_event.BrandId),
                     new SqlParameter("@eventname",_event.Name),
                     new SqlParameter("@eventdetails",_event.Details),
-                    new SqlParameter("@eventdate",_event.DateTime)
+                    new SqlParameter("@eventdate",dateTime)
                 };
                 return db.ExecuteNonQuery(SpConstants.SP_ADD_EVENT, parameter);
             }
@@ -81,6 +84,7 @@ namespace Repository.Implementations
 
         public bool Update(Event _event)
         {
+            DateTime dateTime = validate.ValidateDateTime(_event.DateTime);
             try
             {
                 SqlParameter[] parameter =
@@ -89,7 +93,7 @@ namespace Repository.Implementations
                     new SqlParameter("@BrandId", _event.BrandId),
                     new SqlParameter("@EventName", _event.Name),
                     new SqlParameter("@EventDetails", _event.Details),
-                    new SqlParameter("@EventDateTime", _event.DateTime)
+                    new SqlParameter("@EventDateTime", dateTime)
                 };
                 return db.ExecuteNonQuery("SpUpdateEvent", parameter);
             }

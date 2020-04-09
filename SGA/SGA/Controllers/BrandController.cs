@@ -50,9 +50,16 @@ namespace SGA.Controllers
         ///<returns></returns>
         [HttpPost]
         [Route("AddNew")]
-        public bool AddBrand([FromBody] Brand brand)
+        public string AddBrand([FromBody] Brand brand)
         {
-            return _svc.Add(brand);
+            if (_svc.Add(brand))
+            {
+                return StatusCodes.Status201Created.ToString();
+            }
+            else
+            {
+                return StatusCodes.Status400BadRequest.ToString();
+            }
         }
 
         ///<summary> 
@@ -61,9 +68,16 @@ namespace SGA.Controllers
         ///<returns></returns>
         [HttpPost]
         [Route("Update")]
-        public bool UpdateBrand([FromBody] Brand brand)
+        public string UpdateBrand([FromBody] Brand brand)
         {
-            return _svc.Update(brand);
+            if (_svc.Update(brand))
+            {
+                return StatusCodes.Status200OK.ToString();
+            }
+            else
+            {
+                return StatusCodes.Status400BadRequest.ToString();
+            }
         }
 
         ///<summary> 
@@ -73,9 +87,16 @@ namespace SGA.Controllers
         ///<returns></returns>
         [HttpPost]
         [Route("Delete")]
-        public bool DeleteBrand(int id)
+        public string DeleteBrand(int id)
         {
-            return _svc.Delete(id);
+            if (_svc.Delete(id))
+            {
+                return StatusCodes.Status200OK.ToString();
+            }
+            else
+            {
+                return StatusCodes.Status400BadRequest.ToString();
+            }
         }
 
     }

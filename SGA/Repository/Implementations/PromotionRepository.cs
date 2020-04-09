@@ -12,12 +12,15 @@ namespace Repository.Implementations
     public class PromotionRepository : IPromotionRepository
     {
         IDBhelper _db;
+        Validate validate = new Validate();
         public PromotionRepository(IDBhelper dBhelper)
         {
             _db = dBhelper;
         }
         public bool Add(Promotion promo)
         {
+            DateTime StartDate = validate.ValidateDateTime(promo.StartDate);
+            DateTime EndDate = validate.ValidateDateTime(promo.EndDate);
             try
             {
                 SqlParameter[] parameter =
@@ -26,8 +29,8 @@ namespace Repository.Implementations
                     new SqlParameter("@PromotionDetails",promo.Details),
                     new SqlParameter("@BrandId",promo.BrandId),
                     new SqlParameter("@ShopId",promo.ShopId),
-                    new SqlParameter("@StartDate",promo.StartDate),
-                    new SqlParameter("@EndDate",promo.EndDate),
+                    new SqlParameter("@StartDate",StartDate),
+                    new SqlParameter("@EndDate",EndDate),
                     new SqlParameter("@Promocode",promo.PromoCode),
                     new SqlParameter("@isShop",promo.isShop),
                     new SqlParameter("@isBrand",promo.isBrand)
@@ -122,6 +125,8 @@ namespace Repository.Implementations
 
         public bool Update(Promotion promo)
         {
+            DateTime StartDate = validate.ValidateDateTime(promo.StartDate);
+            DateTime EndDate = validate.ValidateDateTime(promo.EndDate);
             try
             {
                 SqlParameter[] parameter =
@@ -131,8 +136,8 @@ namespace Repository.Implementations
                     new SqlParameter("@PromotionDetails",promo.Details),
                     new SqlParameter("@BrandId",promo.BrandId),
                     new SqlParameter("@ShopId",promo.ShopId),
-                    new SqlParameter("@StartDate",promo.StartDate),
-                    new SqlParameter("@EndDate",promo.EndDate),
+                    new SqlParameter("@StartDate",StartDate),
+                    new SqlParameter("@EndDate",EndDate),
                     new SqlParameter("@Promocode",promo.PromoCode),
                     new SqlParameter("@isShop",promo.isShop),
                     new SqlParameter("@isBrand",promo.isBrand)

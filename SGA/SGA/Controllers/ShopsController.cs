@@ -62,9 +62,16 @@ namespace SGA.Controllers
         /// <returns></returns>
         [HttpDelete]
         [Route("Delete/{id}")]
-        public bool Delete(int id)
+        public string Delete(int id)
         {
-            return _shopService.DeleteShop(id);
+            if (_shopService.DeleteShop(id))
+            {
+                return StatusCodes.Status200OK.ToString();
+            }
+            else
+            {
+                return StatusCodes.Status400BadRequest.ToString();
+            }
         }
 
         /// <summary>
@@ -73,9 +80,16 @@ namespace SGA.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("AddNew")]
-        public bool CreateShop([FromBody] Shop shop)
+        public string CreateShop([FromBody] Shop shop)
         {
-            return _shopService.AddShop(shop);
+            if (_shopService.AddShop(shop))
+            {
+                return StatusCodes.Status201Created.ToString();
+            }
+            else
+            {
+                return StatusCodes.Status400BadRequest.ToString();
+            }
         }
 
         /// <summary>
@@ -84,9 +98,16 @@ namespace SGA.Controllers
         /// <returns></returns>
         [HttpPut]
         [Route("Update")]
-        public bool UpdateShop([FromBody] Shop shop)
+        public string UpdateShop([FromBody] Shop shop)
         {
-            return _shopService.UpdateShop(shop);
+            if (_shopService.UpdateShop(shop))
+            {
+                return StatusCodes.Status200OK.ToString();
+            }
+            else
+            {
+                return StatusCodes.Status400BadRequest.ToString();
+            }
         }
     }
 }

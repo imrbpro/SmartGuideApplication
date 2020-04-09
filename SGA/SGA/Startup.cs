@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,9 +24,9 @@ namespace SGA
             services.Register();
             services.AddSwaggerGen(x =>
             {
-                x.SwaggerDoc("Smart Guide Application | API - V1", new Microsoft.OpenApi.Models.OpenApiInfo
+                x.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
-                    Version = "v1.0",
+                    Version = "v1",
                     Title = "Smart Guide Application | API - V1",
                     Contact = new Microsoft.OpenApi.Models.OpenApiContact
                     {
@@ -56,7 +57,9 @@ namespace SGA
             app.UseHttpsRedirection();
             app.UseMvc();
             app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+            });
         }
     }
 }
