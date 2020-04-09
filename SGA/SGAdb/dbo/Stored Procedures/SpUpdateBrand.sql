@@ -1,0 +1,1 @@
+﻿CREATE PROCEDURE [dbo].[SpUpdateBrand]   @Id int,   @Name nvarchar(MAX),   @ShopNumber nvarchar(MAX),   @Owner nvarchar(50),   @ImagePath nvarchar(MAX)   AS  BEGIN   UPDATE    Brand    SET    brand_name = @Name,   shop_no = @ShopNumber,   brand_owner = @Owner,   brand_logo = @ImagePath   Where brand_id = @Id   END

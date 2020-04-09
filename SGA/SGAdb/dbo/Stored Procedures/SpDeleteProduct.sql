@@ -1,0 +1,1 @@
+﻿CREATE PROCEDURE [dbo].[SpDeleteProduct]   @ProductId int  AS  BEGIN   DELETE Product    WHERE product_id = @ProductId  END

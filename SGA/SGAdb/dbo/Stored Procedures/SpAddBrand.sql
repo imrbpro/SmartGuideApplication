@@ -1,0 +1,1 @@
+﻿CREATE PROCEDURE [dbo].[SpAddBrand]   @Name nvarchar(MAX),   @ShopNumber nvarchar(MAX),   @Owner nvarchar(50),   @ImagePath nvarchar(MAX)   AS  BEGIN   INSERT INTO    Brand   (   brand_name,   shop_no,   brand_owner,   brand_logo   )   VALUES(   @Name,   @ShopNumber,   @Owner,   @ImagePath   )    END

@@ -1,0 +1,1 @@
+﻿CREATE PROCEDURE [dbo].[SpDeleteBrand]   @id int  AS  BEGIN   DELETE from Brand where brand_id = @id  END

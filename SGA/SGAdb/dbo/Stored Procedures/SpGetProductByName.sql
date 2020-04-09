@@ -1,0 +1,1 @@
+﻿CREATE PROCEDURE [dbo].[SpGetProductByName]   @Name nvarchar(50)  AS  BEGIN   SELECT * FROM    Product WHERE product_name= @Name   FOR JSON PATH   END

@@ -1,0 +1,1 @@
+﻿CREATE PROCEDURE [dbo].[SpDeletePromotion]   @PromotionId int  AS  BEGIN   DELETE   Promotion   WHERE promotion_id = @PromotionId    END

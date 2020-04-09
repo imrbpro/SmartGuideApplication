@@ -1,0 +1,1 @@
+﻿CREATE PROCEDURE [dbo].[SpAddProduct]   @ShopId int,   @BrandId int,   @ProductName nvarchar(50),   @ProductColor nvarchar(50),   @ImagePath nvarchar(MAX)  AS  BEGIN   INSERT INTO    Product   (   shop_id,   brand_id,   product_name,   product_color,   product_image   )   VALUES(   @ShopId,   @BrandId,   @ProductName,   @ProductColor,   @ImagePath   )    END

@@ -1,0 +1,1 @@
+﻿CREATE PROCEDURE [dbo].[SpGetAllBrands]   @Page int  AS  BEGIN   SELECT * FROM    Brand    ORDER BY brand_id   OFFSET (@Page - 1) * 10 ROWS    FETCH    NEXT 10 ROWS ONLY    FOR JSON PATH   END

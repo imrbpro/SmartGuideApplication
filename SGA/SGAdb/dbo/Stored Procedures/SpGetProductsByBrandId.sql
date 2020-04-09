@@ -1,0 +1,1 @@
+﻿CREATE PROCEDURE [dbo].[SpGetProductsByBrandId]   @BrandId int  AS  BEGIN   SELECT * FROM    Product WHERE brand_id= @BrandId   FOR JSON PATH   END

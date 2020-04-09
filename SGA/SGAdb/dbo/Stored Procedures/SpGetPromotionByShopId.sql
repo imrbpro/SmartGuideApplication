@@ -1,0 +1,1 @@
+﻿CREATE PROCEDURE [dbo].[SpGetPromotionByShopId]   @ShopId int  AS  BEGIN   SELECT * FROM    Promotion WHERE shop_id= @ShopId   FOR JSON PATH   END
