@@ -5,4 +5,3 @@ Open Public Api's Using
 3. Sql server 2016 - Database
 4. Visual Studio 2017 Development,publish
 5. Swagger - Swashbuckle Api Documentation
-6. Somee - Webhosting
